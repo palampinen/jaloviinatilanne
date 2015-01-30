@@ -20,7 +20,8 @@ angular.module('jallufinApp')
       {left:37, top:90,name:'turku', amount:0},
       {left:32, top:74,name:'pori', amount:0},
       {left:46, top:93,name:'helsinki', amount:0},
-      {left:63, top:84,name:'lappeenranta', amount:0}
+      {left:63, top:84,name:'lappeenranta', amount:0},
+      {left:62, top:49,name:'kajaani', amount:0}
 
     ]
 
