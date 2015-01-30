@@ -1,5 +1,7 @@
 #Tarkista Jaloviinan tilanne kaupunkien Alko-myymälöissä
 
+http://jallu.firebaseapp.com/
+
 ## Kaupungit
 * oulu
 * rovaniemi
