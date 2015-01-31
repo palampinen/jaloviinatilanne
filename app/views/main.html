@@ -1,4 +1,6 @@
 
 <div id="map">
-  <span class="point" data-toggle="tooltip" data-placement="left" title="{{city.name.toUpperCase()}}" ng-repeat="city in cities" style="left:{{city.left}}%; top:{{city.top}}%"><span class="badge">{{city.amount}}</span></span>
+  <span class="point" data-toggle="tooltip" data-placement="left" title="{{city.name.toUpperCase()}}" ng-repeat="city in cities" style="left:{{city.left}}%; top:{{city.top}}%"><span  ng-mouseleave="resetBottlesPerCapita()" ng-mouseover="displayAmountPerCapita(city)" class="badge">{{city.amount}}</span></span>
 </div>
+
+<div ng-if="inhabitantsPerBottle != null" id="bottles_per_capita">Yhden Jaloviinapullon jakaa {{inhabitantsPerBottle | number : 0}} asukasta</div>
