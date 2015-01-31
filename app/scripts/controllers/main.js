@@ -45,11 +45,11 @@ angular.module('jallufinApp')
 
    }
 
-   $scope.bottlesPerCapitaCount = null;
+   $scope.inhabitantsPerBottle = null;
    $scope.displayAmountPerCapita = function(city) {
-     $scope.bottlesPerCapitaCount = city.amount / city.inhabitants;
+     $scope.inhabitantsPerBottle = city.inhabitants / city.amount;
    }
    $scope.resetBottlesPerCapita = function() {
-     $scope.bottlesPerCapitaCount = null;
+     $scope.inhabitantsPerBottle = null;
    }
   });
