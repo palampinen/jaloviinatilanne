@@ -1,4 +1,5 @@
-
 <div id="map">
-  <span class="point" data-toggle="tooltip" data-placement="left" title="{{city.name.toUpperCase()}}" ng-repeat="city in cities" style="left:{{city.left}}%; top:{{city.top}}%"><span class="badge">{{city.amount}}</span></span>
+  <span class="point" data-toggle="tooltip" data-placement="left" title="{{city.name.toUpperCase()}}" ng-repeat="city in cities" style="left:{{city.left}}%; top:{{city.top}}%">
+    <span class="badge" ns-popover ns-popover-trigger="click" ns-popover-placement="right" ns-popover-template="details" ng-click="getDetails(city.name);">{{city.amount}}</span>
+  </span>
 </div>

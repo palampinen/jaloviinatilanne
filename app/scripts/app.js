@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'nsPopover'
   ])
   .config(function ($routeProvider) {
     $routeProvider
