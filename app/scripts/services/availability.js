@@ -19,12 +19,12 @@ angular.module('jallufinApp')
             $http.get(corsURL+APIURL+param,{
             
             })
-            .success(function(data, status , header, config){
-              deferred.resolve(data)
+            .success(function(data){
+              deferred.resolve(data);
             });
               return deferred.promise;
         }
-      }
+      };
 
 
   });
