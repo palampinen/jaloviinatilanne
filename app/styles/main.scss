@@ -5,20 +5,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 
-$jallu: #CE7D14 !default;
+$jallu: #D3A458 !default;
 $lightjaffa: #E5D0A2 !default;
 $vesi: #446993 !default;
 $vissy: #5E97C9 !default;
+$pommac: #F4E2BA !default;
 
-@mixin background-gradient($color1, $color2) {
-background:$color1;
-background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,$color1), color-stop(100%,$color2));
-background:-ms-linear-gradient(160deg, $color1 0%,$color2 100%);
-background:-webkit-linear-gradient(160deg, $color1 0%, $color2 100%);
-background:linear-gradient(160deg, $color1 0%,$color2 100%);
-background-size:100% 100%;
-background-attachment:fixed;
-}
+
 
 body,html {min-height: 100%;}
 
@@ -30,8 +23,7 @@ body {
   background: #FCF5E3;
 }
 
-h1 {color:#C0B995; font-size: 40px;font-size:4vmin; font-weight:700;text-align: center;}
-
+h1 {color:$jallu; font-size: 40px;font-size:4vmin; font-weight:700;text-align: center;}
 
 #map {
   position: relative;
@@ -46,9 +38,8 @@ h1 {color:#C0B995; font-size: 40px;font-size:4vmin; font-weight:700;text-align: 
   background-size: auto 100%;
 
   .point {
+    cursor:pointer;
     position: absolute; left:50%; top:50%;
-    /* background: #CE7D14; 
-    background: linear-gradient($jallu 0%,lighten($jallu,10%) 50%, $jallu 100% );  */
     background:url(../images/jalo.png) 50% 50% no-repeat;
     background-size: cover;
     width: 50px; height: 50px; margin-left:-25px; border-radius: 50%;
@@ -69,7 +60,7 @@ h1 {color:#C0B995; font-size: 40px;font-size:4vmin; font-weight:700;text-align: 
       transition:all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
       -webkit-transition:all  0.2scubic-bezier(0.25, 0.8, 0.25, 1);
      }
-     &:hover {
+     &:hover, &:active, &:focus,&.active{
       
       .badge { transform:scale(1.3); -webkit-transform:scale(1.3); }
      }
@@ -78,14 +69,51 @@ h1 {color:#C0B995; font-size: 40px;font-size:4vmin; font-weight:700;text-align: 
      filter: drop-shadow(2px 4px 2px rgba(0, 0, 0, 0.3));
   }
 
+
 }
 
+.cities {
+  h2 {color:$vissy; border-bottom: 1px solid $vissy; display:block; padding:10px 35px }
+  .city {
+    cursor:pointer;
+    opacity:0.6;
+    color:rgba(0,0,0,.3);
+    padding: 10px 35px;
+    border-bottom:1px solid rgba(0,0,0,.05);
+    .name {
+      .glyphicon {margin-right:7px;}
+      display:block;color:$jallu; font-size: 18px;margin-left:-30px;
+    }
 
+    .progress {
+      box-shadow: none;-webkit-box-shadow:none;
+      background: #FFF;
+      padding:3px;
+      height: 14px;
+      border-radius:8px;
+      margin:0;
+    }
+    .progress-bar { box-shadow: none;-webkit-box-shadow:none; border-radius:5px;}
+    &.active {opacity:1;
+      .name {color:$vissy;}
+      .percentage span{color:$vissy;}
+      .progress-bar {background: $vissy;}
+    }
+    .percentage span{font-weight: 700;}
+  }
+}
 
 
 @media screen and (max-width: 768px) {
   #map{
-    height:85vmax;
+    height:85vmin;
     width:85vmin;
+    .point {
+      width: 40px; height: 40px; margin-left:-20px; 
+      .badge{margin-left: 15px;
+        font-size: 80%;
+        width:30px; height:30px; line-height: 28px;
+      }
+    }
   }
 }

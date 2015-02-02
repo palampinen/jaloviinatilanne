@@ -1,4 +1,26 @@
 
-<div id="map">
-  <span class="point" data-toggle="tooltip" data-placement="left" title="{{city.name.toUpperCase()}}" ng-repeat="city in cities" style="left:{{city.left}}%; top:{{city.top}}%"><span class="badge">{{city.amount}}</span></span>
+
+<div class="container-fluid">
+
+<div class="col-sm-8">
+  <div id="map">
+    <span class="point" ng-class="{active:active==id}" ng-click="activate(id)" title="{{city.name.toUpperCase()}}" ng-repeat="(id,city) in cities | orderBy:'percentage':true" style="left:{{city.left}}%; top:{{city.top}}%"><span class="badge">{{city.amount}}</span></span>
+  </div>
+</div>
+
+<div class="col-sm-4 cities">
+  <h2>Kaupungit</h2>
+
+  <div ng-class="{active:active===id}" ng-click="activate(id)" class="city" title="{{city.name.toUpperCase()}}" ng-repeat="(id,city) in cities | orderBy:'percentage':true" >
+    <span class="name"><i class="glyphicon glyphicon-map-marker"></i> {{city.name.toUpperCase()}}</span>
+
+    <div class="progress" >
+      <div class="progress-bar progress-bar-warning" role="progressbar" style="width: {{city.percentage}}%"></div>
+    </div>
+    <small class="percentage"><span>{{city.percentage || 0}}%</span> Suomen Jaloviinasta</small>
+  </div>
+
+</div>
+
+
 </div>

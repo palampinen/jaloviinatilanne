@@ -11,6 +11,8 @@ angular.module('jallufinApp')
   .controller('MainCtrl', function ($scope,Availability) {
     
 
+
+
     $scope.cities = [
       {left:52, top:42,name:'oulu', amount:0},
       {left:52, top:31,name:'rovaniemi', amount:0},
@@ -24,25 +26,39 @@ angular.module('jallufinApp')
 
     ]
 
+  var getCities = function() {
    _.each($scope.cities,function(city, id){
 
     Availability.get(city.name).then(function(data){
 
-     $scope.cities[id].amount = _.reduce(data, function(memo, num){ return memo + parseInt(num.Amount); }, 0)
+     $scope.cities[id].amount = _.reduce(data, function(memo, num){ return memo + parseInt(num.Amount); }, 0);
+     $scope.cities[id].percentage = $scope.total ? Math.round(($scope.cities[id].amount / $scope.total) * 1000) / 10 : 0;
+
     },function(data){
         console.log('rrorz')
     })
 
    })
+  }
 
-   $scope.getScale = function(amount) {
-      if(!amount) return 1;
+    // Get total jallus
+    $scope.total = 0;
+    var getTotal = function() {
+      Availability.get('all').then(function(data){
+        $scope.total = _.reduce(data, function(memo, num){ return memo + parseInt(num.Amount); }, 0);
+        getCities();
+      },function(data){
+          console.log('too few?')
+      })
 
-      var total =  _.reduce($scope.cities, function(memo, num){ return memo + parseInt(num.amount); }, 0);
+    }
 
-      
+    getTotal();
 
-   }
+    $scope.active = '';
+    $scope.activate = function(id) {
+      $scope.active = id;
+    }
+
     
-
   });
