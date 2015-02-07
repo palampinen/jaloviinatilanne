@@ -15,8 +15,13 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase',
+    'angles'
   ])
+
+  .value('fbURL', 'https://jallu.firebaseio.com/')
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
